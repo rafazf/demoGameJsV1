@@ -10,6 +10,9 @@ body{
     width: 150px;
     height: 50px;
     border-radius: 20px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .objeto{
     background-color: darkorange;

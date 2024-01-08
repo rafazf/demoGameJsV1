@@ -1,5 +1,6 @@
 const objeto = document.querySelector('.objeto')
 const contenedor = document.querySelector('.item')
+const puntaje = document.querySelector('.puntaje')
 const vX = document.documentElement.clientWidth
 const vY = document.documentElement.clientHeight
 const i = 30;
@@ -24,9 +25,13 @@ async function mover(obj, time) {
             requestAnimationFrame(animar)
         }else{
             eliminarObjetos(obj)
+            asignarPuntaje()
         }
     }
     requestAnimationFrame(animar)
+}
+function asignarPuntaje(){
+    puntaje.innerHTML+='🌟'
 }
 function eliminarObjetos(obj){
     obj.remove()
