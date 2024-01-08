@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+body{
+    background-color: black;
+}
+.puntaje{
+    background-color: white;
+    width: 150px;
+    height: 50px;
+    border-radius: 20px ;
+}
+.objeto{
+    background-color: darkorange;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+
+    transition-property: background-color;
+    transition-duration: 2s;
+    transition-timing-function: ease-out;
+    transition-delay: 1s;
+}
+.item{
+    background-color: rgba(0, 100, 0, 0.7); 
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0px;
+    left: 100px;
+    
+    
+}
+.item:hover{
+    clip-path: circle(150% at top left);
+}
