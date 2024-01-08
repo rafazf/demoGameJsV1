@@ -1,13 +1,15 @@
+const tablero = document.querySelector('.tablero')
 const objeto = document.querySelector('.objeto')
 const contenedor = document.querySelector('.item')
 const puntaje = document.querySelector('.puntaje')
+
 const vX = document.documentElement.clientWidth
 const vY = document.documentElement.clientHeight
 const i = 30;
 
 async function mover(obj, time) {
-    obj.style.left = posicionAle()+'px'
-    contenedor.style.left = posicionAle()+'px'
+    obj.style.left = posicionA()+'px'
+    contenedor.style.left = posicionA()+'px'
     const tiempoInicio = new Date().getTime();
 
     function animar(){
@@ -53,7 +55,7 @@ function posicion(obj){
         height: coordenadas.height
     }
 }
-function posicionAle(){
+function posicionA(){
     var wPantalla = window.innerWidth;
     var vAleatorio = Math.random()*wPantalla
     vAleatorio = Math.round(vAleatorio)
@@ -74,4 +76,15 @@ document.addEventListener('keydown',function(e){
             break;
     }
 })
+//funcion para crear mas objetos
+
+function createNewObject(color){
+    var newObject = document.createElement('div')
+    newObject.classList.add("objeto")
+    newObject.style.backgroundColor=color
+    return tablero.appendChild(newObject)
+}
+
 mover(objeto,100)
+mover(createNewObject('blue'),1000)
+mover(createNewObject('red'),10)
