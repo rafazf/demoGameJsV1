@@ -7,7 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="tablero">
+   <div class="containerSeleccion">
+    <form>
+        <span id="seleccion">Selecciona el color de contenedor</span>
+        <div class="btonContent">
+            <button class="bton gris" data-color="gray">Gray</button>
+            <button class="bton marron" data-color="brown">Brown</button>
+            <button class="bton verde" data-color="green">Green</button>
+            <button class="bton amarillo" data-color="yellow">Yellow</button>
+            <button class="bton azul" data-color="blue">Blue</button>
+            <button class="bton rojo" data-color="red">Red</button>
+        </div>
+    </form>
+   </div>
+    <div class="tablero hide">
         <div class="puntaje">
 
         </div>
@@ -18,6 +31,7 @@
             
         </div>
         <div class="item">
+            <img src="img/logo.png" alt="">
         </div>
     </div>
 

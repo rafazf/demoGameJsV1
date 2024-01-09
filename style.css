@@ -3,19 +3,22 @@
     margin: 0;
 }
 body{
-    background-color: black;
+    background-color: rgb(30, 33, 41);
+    font-family: Arial, Helvetica, sans-serif;
 }
 .puntaje{
-    background-color: white;
-    width: 150px;
+    background-color: rgba(0,0,0,0.5);
+    width: 200px;
     height: 50px;
-    border-radius: 20px ;
+    border-radius: 0 20px 20px 20px ;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
 }
 .objeto{
-    background-color: darkorange;
     width: 50px;
     height: 50px;
     border-radius: 100px;
@@ -29,16 +32,76 @@ body{
     transition-delay: 1s;
 }
 .item{
-    background-color: rgba(0, 100, 0, 0.7); 
     width: 200px;
     height: 200px;
     border-radius: 10px;
     position: absolute;
     bottom: 0px;
-    left: 100px;
-    
-    
+    left: 100px;  
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-left: 10px solid wheat;
+}
+.item img{
+    max-width: 100%;
+    min-height: 100%;
+}
+.hide{
+    visibility: hidden;
 }
 .item:hover{
     clip-path: circle(150% at top left);
 }
+.containerSeleccion{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: rgb(63, 60, 57);
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 800px;
+    width: 80%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btonContent{
+    border-radius: 20px;
+    padding: 10px;
+
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+#seleccion{
+    color: wheat;
+}
+.bton{
+    border: 1px solid white;
+    color: rgb(30, 33, 41);;
+    border-radius: 20px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.verde{background-color: green;}
+.marron{background-color: brown;}
+.roj{background-color: orange;}
+.amarillo{background-color: yellow;}
+.gri{background-color: gray;}
+.azul{background-color: blue;}
+.rojo{background-color: red;}
+body {
+    width: 100%;
+    height: 100vh;
+    background: url('img/ambiente.png') no-repeat center center fixed; 
+    background-size: cover; 
+    
+    /* text-align: center; 
+    line-height: 100vh; */
+  }
+  
