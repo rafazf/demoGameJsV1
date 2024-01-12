@@ -125,6 +125,16 @@ document.addEventListener('keydown',function(e){
             break;
     }
 })
+//Movimiento del contenedor con mouse
+document.addEventListener('mousemove',function(e){
+    const mouseX = e.clientX;
+    contenedor.style.left = mouseX + 'px';
+})
+//Movimiento del contenedor con inclinacion del movil
+window.addEventListener('deviceorientation',function(e){
+    const inclinacionX = e.gamma;
+    contenedor.style.left = inclinacionX + 'px';
+})
 //funcion para crear objeto
 function createNewObject(color){
     var newObject = document.createElement('div')
@@ -177,8 +187,3 @@ function start(){
     reproductor.volume = 0.3;
     createNewObjects(20).then((mensaje)=>{console.log(mensaje)})
 }
-
-
-//mover(objeto,100)
-// mover(createNewObject('blue'),1000)
-// mover(createNewObject('red'),10)

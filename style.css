@@ -53,9 +53,7 @@ body{
 .hide{
     visibility: hidden;
 }
-.item:hover{
-    clip-path: circle(150% at top left);
-}
+
 .containerSeleccion{
     display: flex;
     justify-content: center;
