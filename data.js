@@ -7,6 +7,9 @@ const containerSeleccion = document.querySelector('.containerSeleccion')
 const reproductor = document.querySelector('.reproductor')
 const puntajeSong = document.querySelector('.puntajeSong')
 const errorSong = document.querySelector('.errorSong')
+
+const matObjVerde = ['img/vidrio1.png']
+
 const vX = document.documentElement.clientWidth
 const vY = document.documentElement.clientHeight
 const i = 30;
@@ -141,6 +144,10 @@ function createNewObject(color){
     var newObject = document.createElement('div')
     newObject.classList.add("objeto")
     newObject.style.backgroundColor=color
+
+    var imgObject = document.querySelector('.imgObjecto')
+    //imgObject.src = 'img/vidrio1.png'
+
     return tablero.appendChild(newObject)
 }
 //funcion que crea una cantidad n de objetos
