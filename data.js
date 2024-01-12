@@ -4,7 +4,9 @@ const contenedor = document.querySelector('.item')
 const puntaje = document.querySelector('.puntaje')
 const botones = document.querySelector('.btonContent')
 const containerSeleccion = document.querySelector('.containerSeleccion')
-
+const reproductor = document.querySelector('.reproductor')
+const puntajeSong = document.querySelector('.puntajeSong')
+const errorSong = document.querySelector('.errorSong')
 const vX = document.documentElement.clientWidth
 const vY = document.documentElement.clientHeight
 const i = 30;
@@ -20,7 +22,7 @@ function getDataGame(){
     return isColor
 }
 //indicar seleccion de boton del color
-async function  seleccionColor(e){
+async function seleccionColor(e){
     e.preventDefault()
     if(e.target.matches(".bton")){
         const getColor = e.target.getAttribute('data-color')
@@ -60,7 +62,11 @@ async function mover(obj) {
         }else{
             var colorObj = isColor(obj)
             if(colorObj == contenedor.style.backgroundColor){
+                puntajeSong.play();
                 asignarPuntaje()
+            }else{
+                console.log('error')
+                errorSong.play();
             }
             eliminarObjetos(obj)
         }
@@ -134,7 +140,7 @@ function createNewObjects(n){
             async function creaYmueve(){
                 const newObject = createNewObject(getRandomColor())
                 mover(newObject)
-                await new Promise((resolve)=> setTimeout(resolve, 1000))
+                await new Promise((resolve)=> setTimeout(resolve, 3000))
             }
             async function bucleObjetos(){
                 while(count < n){
@@ -150,7 +156,7 @@ function createNewObjects(n){
 }
 //funcion para generar colores aleatorios
 function getRandomColor() {
-    const arrColor = ['gray','brown','green','yellow','blue','red']
+    const arrColor = ['white','gray','brown','green','yellow','blue','red']
     const numeroDecimal = Math.random();
     const numeroAleatorio = Math.floor(numeroDecimal * 6) + 1;
     return arrColor[numeroAleatorio];
@@ -165,10 +171,11 @@ function setContainerColor(container, color){
     container.style.backgroundColor = color
 }
 function start(){
-    contenedor.style.backgroundColor = getDataGame  ('colorContenedor')
+    contenedor.style.backgroundColor = getDataGame('colorContenedor')
     var colorContenedor = contenedor.style.backgroundColor
-
-    createNewObjects(10).then((mensaje)=>{console.log(mensaje)})
+    reproductor.play();
+    reproductor.volume = 0.3;
+    createNewObjects(12).then((mensaje)=>{console.log(mensaje)})
 }
 
 
