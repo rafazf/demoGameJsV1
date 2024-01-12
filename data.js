@@ -175,7 +175,7 @@ function start(){
     var colorContenedor = contenedor.style.backgroundColor
     reproductor.play();
     reproductor.volume = 0.3;
-    createNewObjects(12).then((mensaje)=>{console.log(mensaje)})
+    createNewObjects(20).then((mensaje)=>{console.log(mensaje)})
 }
 
 
