@@ -130,10 +130,11 @@ document.addEventListener('mousemove',function(e){
     const mouseX = e.clientX;
     contenedor.style.left = mouseX + 'px';
 })
-//Movimiento del contenedor con inclinacion del movil
-window.addEventListener('deviceorientation',function(e){
-    const inclinacionX = e.gamma;
-    contenedor.style.left = inclinacionX + 'px';
+//Movimiento del contenedor con touch del movil
+document.addEventListener('touchmove',function(e){
+    const touch = e.touches[0];
+    const touchX = touch.clientX;
+    contenedor.style.left = touchX + 'px';
 })
 //funcion para crear objeto
 function createNewObject(color){
