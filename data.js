@@ -1,6 +1,7 @@
 const tablero = document.querySelector('.tablero')
 const objeto = document.querySelector('.objeto')
 const contenedor = document.querySelector('.item')
+const imgContenedor = document.querySelector('.imgContenedor')
 const puntaje = document.querySelector('.puntaje')
 const botones = document.querySelector('.btonContent')
 const containerSeleccion = document.querySelector('.containerSeleccion')
@@ -14,7 +15,22 @@ const vX = document.documentElement.clientWidth
 const vY = document.documentElement.clientHeight
 const i = 30;
 var score = 0;
-
+//Funcion para crear la imagen dentro del contenedor
+function createContainer(color) {
+    switch (color) {
+        case 'green':
+            imgContenedor.src='/contenedorImg/green0.png'
+            break;
+        case 'yellow':
+            imgContenedor.src='/contenedorImg/yellow0.png'
+            break;
+        case 'blue':
+            imgContenedor.src='/contenedorImg/blue0.png'
+            break;
+        default:
+            break;
+    }
+}
 //Guardar datos del juego en localStorage
 function saveDataGame(isColor){
     localStorage.setItem('colorContenedor',isColor)
@@ -27,7 +43,7 @@ function getDataGame(){
 //indicar seleccion de boton del color
 async function seleccionColor(e){
     e.preventDefault()
-    if(e.target.matches(".bton")){
+    if(e.target.matches(".bton") || e.target.matches(".imageSelection")){
         const getColor = e.target.getAttribute('data-color')
         e.currentTarget.style.background = getColor     
         await new Promise((resolve)=>{
@@ -64,7 +80,7 @@ async function mover(obj) {
             }
         }else{
             var colorObj = isColor(obj)
-            if(colorObj == contenedor.style.backgroundColor){
+            if(colorObj == contenedor.getAttribute('customColor')){
                 puntajeSong.play();
                 asignarPuntaje()
             }else{
@@ -144,7 +160,7 @@ function createNewObject(color){
     var newObject = document.createElement('div')
     newObject.classList.add("objeto")
     newObject.style.backgroundColor=color
-
+    newObject.setAttribute('customColor',''+color)
     var imgObject = document.querySelector('.imgObjecto')
     //imgObject.src = 'img/vidrio1.png'
 
@@ -158,7 +174,7 @@ function createNewObjects(n){
             async function creaYmueve(){
                 const newObject = createNewObject(getRandomColor())
                 mover(newObject)
-                await new Promise((resolve)=> setTimeout(resolve, 3000))
+                await new Promise((resolve)=> setTimeout(resolve, 2000))
             }
             async function bucleObjetos(){
                 while(count < n){
@@ -174,7 +190,7 @@ function createNewObjects(n){
 }
 //funcion para generar colores aleatorios
 function getRandomColor() {
-    const arrColor = ['white','gray','brown','green','yellow','blue','red']
+    const arrColor = ['white','green','yellow','blue']
     const numeroDecimal = Math.random();
     const numeroAleatorio = Math.floor(numeroDecimal * 6) + 1;
     return arrColor[numeroAleatorio];
@@ -185,12 +201,15 @@ function isColor(obj){
     return color
 }
 //funcion para asignar el color del contenedor
-function setContainerColor(container, color){
+/*function setContainerColor(container, color){
     container.style.backgroundColor = color
-}
+}*/
 function start(){
-    contenedor.style.backgroundColor = getDataGame('colorContenedor')
-    var colorContenedor = contenedor.style.backgroundColor
+    //contenedor.style.backgroundColor = getDataGame('colorContenedor')
+    contenedor.setAttribute('customColor',''+getDataGame('colorContenedor'))
+    var colorContenedor = getDataGame('colorContenedor')
+    createContainer(colorContenedor)
+
     reproductor.play();
     reproductor.volume = 0.3;
     createNewObjects(20).then((mensaje)=>{console.log(mensaje)})

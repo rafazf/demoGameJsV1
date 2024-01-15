@@ -36,8 +36,8 @@ body{
     max-height: 100%;
 }
 .item{
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
 
     border-radius: 10px;
     position: absolute;
@@ -48,23 +48,22 @@ body{
     justify-content: center;
     align-items: center;
    
-    clip-path: polygon(0 0, 100% 0, 79% 100%, 24% 100%);
 }
 @media only screen and (max-width: 500px) and (orientation:portrait) {
     .item {
-        width: 100px;
+        width: 80px;
         height: 100px;
     }
 }
 @media only screen and (max-width: 500px) and (orientation:landscape) {
     .item {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
     }
 }
 .item img{
-    max-width: 50%;
-    min-height: 50%;
+    max-width: 130%;
+    min-height: 130%;
 }
 .hide{
     visibility: hidden;
@@ -73,12 +72,13 @@ body{
 .containerSeleccion{
     display: flex;
     justify-content: center;
-    margin: 0 auto;
-    background-color: rgb(63, 60, 57);
+    margin: 10px auto;
+
+    background-color: rgba(39, 77, 59, 0.5);
     padding: 10px;
     border-radius: 20px;
-    max-width: 800px;
-    width: 80%;
+    max-width: 500px;
+    width: 90%;
 }
 form{
     display: flex;
@@ -91,6 +91,10 @@ form{
 
     transition-property: background-color;
     transition-duration: 0.5s;
+
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 }
 #seleccion{
     color: wheat;
@@ -103,13 +107,40 @@ form{
     font-weight: bold;
     cursor: pointer;
 }
+.verde, .amarillo, .azul {
+    display: flex; width: 30%;
+    transition: transform .5s;
+}
 .verde{background-color: green;}
-.marron{background-color: brown;}
-.roj{background-color: orange;}
+.verde img{
+    max-width: 100%;
+    max-height: 100%;
+}
 .amarillo{background-color: yellow;}
-.gri{background-color: gray;}
+.amarillo img{
+    max-width: 100%;
+    max-height: 100%;
+}
 .azul{background-color: blue;}
-.rojo{background-color: red;}
+.azul img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.verde:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(4px 4px 10px #dbdbdb);
+    transition: transform .3s;
+}
+.amarillo:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(4px 4px 10px #dbdbdb);
+    transition: transform .3s;
+}
+.azul:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(4px 4px 10px #dbdbdb);
+    transition: transform .3s;
+}
 body {
     width: 100%;
     height: 100vh;
