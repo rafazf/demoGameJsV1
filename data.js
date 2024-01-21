@@ -3,6 +3,7 @@ const objeto = document.querySelector('.objeto')
 const contenedor = document.querySelector('.item')
 const imgContenedor = document.querySelector('.imgContenedor')
 const puntaje = document.querySelector('.puntaje')
+const vidas = document.querySelector('.vidas')
 const botones = document.querySelector('.btonContent')
 const containerSeleccion = document.querySelector('.containerSeleccion')
 const reproductor = document.querySelector('.reproductor')
@@ -15,6 +16,7 @@ const vX = document.documentElement.clientWidth
 const vY = document.documentElement.clientHeight
 const i = 30;
 var score = 0;
+let vida = [1,1,1,1,1]
 //Funcion para crear la imagen dentro del contenedor
 function createContainer(color) {
     switch (color) {
@@ -80,11 +82,12 @@ async function mover(obj) {
             }
         }else{
             var colorObj = isColor(obj)
-            if(colorObj == contenedor.getAttribute('customColor')){
+            if(colorObj === contenedor.getAttribute('customColor')){
                 puntajeSong.play();
                 asignarPuntaje()
             }else{
-                console.log('error')
+                quitarVida();
+                cambiaContenedor(colorObj)
                 errorSong.play();
             }
             eliminarObjetos(obj)
@@ -192,7 +195,8 @@ function createNewObjects(n){
 function getRandomColor() {
     const arrColor = ['white','green','yellow','blue']
     const numeroDecimal = Math.random();
-    const numeroAleatorio = Math.floor(numeroDecimal * 6) + 1;
+    const numeroAleatorio = Math.floor(numeroDecimal * 3) + 1;
+    console.log(numeroAleatorio)
     return arrColor[numeroAleatorio];
 }
 //funcion identifica color de elemento 
@@ -210,7 +214,23 @@ function start(){
     var colorContenedor = getDataGame('colorContenedor')
     createContainer(colorContenedor)
 
+    asignarVida()
+
     reproductor.play();
     reproductor.volume = 0.3;
     createNewObjects(20).then((mensaje)=>{console.log(mensaje)})
+}
+function asignarVida(){
+    vida.forEach(v=>{
+        vidas.innerHTML+='❤'
+    })
+}
+function quitarVida(){
+    vida.pop();
+    vidas.innerHTML=""
+    asignarVida();
+}
+function cambiaContenedor(color){
+    contenedor.setAttribute('customColor',color)
+    createContainer(color)
 }
