@@ -21,13 +21,13 @@ let vida = [1,1,1,1,1]
 function createContainer(color) {
     switch (color) {
         case 'green':
-            imgContenedor.src='/contenedorImg/green0.png'
+            imgContenedor.src='contenedorImg/green0.png'
             break;
         case 'yellow':
-            imgContenedor.src='/contenedorImg/yellow0.png'
+            imgContenedor.src='contenedorImg/yellow0.png'
             break;
         case 'blue':
-            imgContenedor.src='/contenedorImg/blue0.png'
+            imgContenedor.src='contenedorImg/blue0.png'
             break;
         default:
             break;
